@@ -36,13 +36,6 @@ def read_data(file_path):
         data = [ast.literal_eval(line.strip()) for line in file]
     return data
 
-# 寫入解密結果到文件
-def write_results_to_file(results, file_path):
-    with open(file_path, 'w') as file:
-        for result in results:
-            for line in result:
-                file.write(''.join(line) + '\n')
-            file.write('\n')
 
 # 統計所有可能的60輪解密結果
 def decrypt_all_possible_results(input_file):
@@ -64,9 +57,7 @@ def decrypt_all_possible_results(input_file):
                 ]
                 print(f"使用密鑰p = {p}解密後的消息: {''.join(decrypted_message)}")
                 # 將每一個解密結果添加到解碼矩陣的對應行
-                if (i == 0 and p == 119) or (i == 1 and p == 75):
-                    for j, char in enumerate(decrypted_message):
-                        decoded_matrix[j].append(char)
+
         else:
             print(f"第{i + 1}輪次沒有找到合適的密鑰p")
 
